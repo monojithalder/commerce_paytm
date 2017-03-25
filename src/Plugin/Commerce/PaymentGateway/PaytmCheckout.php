@@ -25,15 +25,12 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   label = @Translation("Paytm Payment"),
  *   display_label = @Translation("Paytm"),
  *    forms = {
- *     "offsite-payment" = "Drupal\commerce_paytm_payu\PluginForm\PaytmCheckoutForm",
+ *     "paytm-payment" = "Drupal\commerce_paytm_payu\PluginForm\PaytmCheckoutForm",
  *   },
- *   payment_method_types = {"credit_card,debit_card,paytm_wallet"},
+ *   payment_method_types = {"credit_card"},
  *   credit_card_types = {
  *     "amex", "discover", "mastercard", "visa",
- *   },
- *   debit_card_types = {
- *     "amex", "discover", "mastercard", "visa",
- *   },
+ *   }
  * )
  */
 class PaytmCheckout extends OffsitePaymentGatewayBase implements ExpressCheckoutInterface {
@@ -93,6 +90,7 @@ class PaytmCheckout extends OffsitePaymentGatewayBase implements ExpressCheckout
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     $form = parent::buildConfigurationForm($form, $form_state);
+    dpm($form);
 
     $form['merchant_id'] = [
       '#type' => 'textfield',
@@ -156,7 +154,7 @@ class PaytmCheckout extends OffsitePaymentGatewayBase implements ExpressCheckout
    * {@inheritdoc}
    */
   public function onReturn(OrderInterface $order, Request $request) {
-    $order_express_checkout_data = $order->getData('paypal_express_checkout');
+    $order_express_checkout_data = $order->getData('paytm_payment');
     if (empty($order_express_checkout_data['token'])) {
       throw new PaymentGatewayException('Token data missing for this PayPal Express Checkout transaction.');
     }

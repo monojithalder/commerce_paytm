@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\commerce_paypal\Plugin\Commerce\PaymentGateway;
+namespace Drupal\commerce_paytm_payu\Plugin\Commerce\PaymentGateway;
 
 use Drupal\commerce_order\Entity\OrderInterface;
 use Drupal\commerce_payment\Entity\PaymentInterface;

@@ -15,7 +15,7 @@ class ExpressCheckoutForm extends BasePaymentOffsiteForm {
 
     /** @var \Drupal\commerce_payment\Entity\PaymentInterface $payment */
     $payment = $this->entity;
-    /** @var \Drupal\commerce_paypal\Plugin\Commerce\PaymentGateway\ExpressCheckoutInterface $payment_gateway_plugin */
+    /** @var \Drupal\commerce_paytm_payu\Plugin\Commerce\PaymentGateway\ExpressCheckoutInterface $payment_gateway_plugin */
     $payment_gateway_plugin = $payment->getPaymentGateway()->getPlugin();
 
     $extra = [
