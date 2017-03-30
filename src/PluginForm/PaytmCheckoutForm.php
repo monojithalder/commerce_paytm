@@ -11,7 +11,9 @@ use Drupal\commerce_paytm_payu\PaytmLibrary;
 
 class PaytmCheckoutForm extends BasePaymentOffsiteForm {
 
-  /**
+    const PAYTM_API_TEST_URL = 'https://pguat.paytm.com/oltp-web/processTransaction';
+    const PAYTM_API_URL = 'https://secure.paytm.in/oltp-web/processTransaction';
+    /**
    * {@inheritdoc}
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
@@ -34,6 +36,12 @@ class PaytmCheckoutForm extends BasePaymentOffsiteForm {
       $merchant_website = $payment_gateway_plugin->getConfiguration()['merchant_website'];
       $cur = $payment_gateway_plugin->getConfiguration()['currency'];
       $lng = $payment_gateway_plugin->getConfiguration()['language'];
+      $mode = $payment_gateway_plugin->getConfiguration()['pmode'];
+      if ($mode == 'test') {
+          $redirect_url = self::PAYTM_API_TEST_URL;
+      } else {
+          $redirect_url = self::PAYTM_API_URL;
+      }
       $redirect_url = 'https://pguat.paytm.com/oltp-web/processTransaction';
       $callback_url =  Url::FromRoute('commerce_payment.checkout.return', ['commerce_order' => $order_id, 'step' => 'payment'], array('absolute' => TRUE))->toString();
       $paramList["MID"] = $merchant_id;
@@ -43,7 +51,7 @@ class PaytmCheckoutForm extends BasePaymentOffsiteForm {
       $paramList["CHANNEL_ID"] = 'WEB';
       $paramList["TXN_AMOUNT"] = round($payment->getAmount()->getNumber(), 2);
       $paramList["CALLBACK_URL"] = $callback_url;
-      $paramList["WEBSITE"] = "WEB_STAGING";
+      $paramList["WEBSITE"] = $merchant_website;
        $paramList['CHECKSUMHASH'] = $paytm_library->getChecksumFromArray($paramList,$merchant_key);
 
     return $this->buildRedirectForm($form, $form_state, $redirect_url, $paramList, 'post');
