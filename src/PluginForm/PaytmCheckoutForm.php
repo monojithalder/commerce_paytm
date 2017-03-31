@@ -42,7 +42,6 @@ class PaytmCheckoutForm extends BasePaymentOffsiteForm {
 				} else {
 						$redirect_url = self::PAYTM_API_URL;
 				}
-				$redirect_url = 'https://pguat.paytm.com/oltp-web/processTransaction';
 				$callback_url =  Url::FromRoute('commerce_payment.checkout.return', ['commerce_order' => $order_id, 'step' => 'payment'], array('absolute' => TRUE))->toString();
 				$paramList["MID"] = $merchant_id;
 				$paramList["ORDER_ID"] = $order_id;
