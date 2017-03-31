@@ -1,5 +1,5 @@
 <?php
-namespace Drupal\commerce_paytm_payu;
+namespace Drupal\commerce_paytm;
 
 class PaytmLibrary {
     function encrypt_e($input, $ky) {

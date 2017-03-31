@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\commerce_paytm_payu\Plugin\Commerce\PaymentGateway;
+namespace Drupal\commerce_paytm\Plugin\Commerce\PaymentGateway;
 
 use Drupal\commerce_order\Entity\OrderInterface;
 use Drupal\commerce_payment\Entity\PaymentInterface;
@@ -16,7 +16,7 @@ use Drupal\Core\Form\FormStateInterface;
 use GuzzleHttp\ClientInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\commerce_paytm_payu\PaytmLibrary;
+use Drupal\commerce_paytm\PaytmLibrary;
 
 /**
  * Provides the Paytm payment gateway.
@@ -26,7 +26,7 @@ use Drupal\commerce_paytm_payu\PaytmLibrary;
  *   label = @Translation("Paytm Payment"),
  *   display_label = @Translation("Paytm"),
  *    forms = {
- *     "offsite-payment" = "Drupal\commerce_paytm_payu\PluginForm\PaytmCheckoutForm",
+ *     "offsite-payment" = "Drupal\commerce_paytm\PluginForm\PaytmCheckoutForm",
  *   },
  *   payment_method_types = {"credit_card"},
  *   credit_card_types = {

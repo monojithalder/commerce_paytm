@@ -1,8 +1,8 @@
 {
   "name": "drupal/commerce_paypal",
   "type": "drupal-module",
-  "description": "Provides Commerce integration for Paytm And PayU.",
-  "homepage": "http://drupal.org/project/commerce_paytm_payu",
+  "description": "Provides Commerce integration for Paytm Payment Gateway",
+  "homepage": "http://drupal.org/project/commerce_paytm",
   "license": "GPL-2.0+",
   "require": {
     "drupal/commerce": "~2"

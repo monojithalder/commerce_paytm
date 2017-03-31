@@ -1,13 +1,13 @@
 <?php
 
-namespace Drupal\commerce_paytm_payu\PluginForm;
+namespace Drupal\commerce_paytm\PluginForm;
 
 use Drupal\commerce_payment\PluginForm\PaymentOffsiteForm as BasePaymentOffsiteForm;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 use Drupal\commerce_order\Entity\Order;
 use Drupal\Component\Utility\Crypt;
-use Drupal\commerce_paytm_payu\PaytmLibrary;
+use Drupal\commerce_paytm\PaytmLibrary;
 
 class PaytmCheckoutForm extends BasePaymentOffsiteForm {
 
